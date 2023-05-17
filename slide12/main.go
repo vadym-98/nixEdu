@@ -32,6 +32,7 @@ func main() {
 	mux.Put("/posts", api.UpdatePost, middleware.RequireAuthentication)
 	mux.Delete("/posts/\\d+", api.DeletePost, middleware.RequireAuthentication)
 
+	//todo create middleware for logging every request headers
 	//todo create your middleware for unauthorized users
 	mux.Get("/login", web.Login, nil)
 	mux.Post("/login", api.Login, nil)
