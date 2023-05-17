@@ -1,0 +1,24 @@
+{{define "login"}}
+
+{{template "header"}}
+
+    <div class="text-left mx-auto">
+        <form method="post" action="/login">
+            {{ if . }}
+                <span class="text-danger">Incorrect credentials</span>
+            {{ end }}
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{{template "footer"}}
+
+{{end}}
