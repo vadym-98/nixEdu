@@ -39,7 +39,9 @@ func main() {
 
 	//todo create logout endpoint
 
-	mux.Get("/", web.Home, middleware.RequireAuthentication)
+	mux.Get("/", web.Home, func(handler http.Handler) http.Handler {
+		return middleware.Log(middleware.RequireAuthentication(handler))
+	})
 
 	fmt.Printf("Server started on port: %s\n", port)
 	log.Fatal(http.ListenAndServeTLS(

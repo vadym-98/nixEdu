@@ -3,6 +3,7 @@ package middleware
 import (
 	"context"
 	"github.com/vadym-98/playground/slide12/domain"
+	"log"
 	"net/http"
 )
 
@@ -21,5 +22,13 @@ func RequireAuthentication(next http.Handler) http.Handler {
 
 		//Authentication was successful, send the request to the next handler
 		next.ServeHTTP(w, req)
+	})
+}
+
+func Log(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Println("it works")
+
+		next.ServeHTTP(w, r)
 	})
 }
